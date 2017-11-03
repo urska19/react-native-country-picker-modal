@@ -182,7 +182,7 @@ export default class CountryPicker extends Component {
     this.props.onChange({
       cca2,
       ...countries[cca2],
-      flag: undefined,
+      flag: countries[cca2].flag,
       name: this.getCountryName(countries[cca2]),
     });
   }
