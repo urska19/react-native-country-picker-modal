@@ -16,6 +16,8 @@ export default StyleSheet.create({
   insideContentContainer: {
     flexDirection: 'row',
   },
+  listViewStyle: {
+  },
   header: {
     marginTop: Platform.OS === 'ios' ? 16 : 0,
     flexDirection: 'row',

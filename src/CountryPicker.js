@@ -360,6 +360,7 @@ export default class CountryPicker extends Component {
                     renderRow={country => this.renderCountry(country)}
                     initialListSize={30}
                     pageSize={15}
+                    style={styles.listViewStyle}
                     onLayout={
                       (
                         { nativeEvent: { layout: { y: offset } } }
