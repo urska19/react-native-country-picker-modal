@@ -347,7 +347,7 @@ export default class CountryPicker extends Component {
             <KeyboardAvoidingView behavior="padding">
               <View style={styles.contentContainer}>
                 <ListView
-                  keyboardShouldPersistTaps="always"
+                  keyboardShouldPersistTaps={true}
                   enableEmptySections
                   ref={listView => (this._listView = listView)}
                   dataSource={this.state.dataSource}
@@ -359,7 +359,7 @@ export default class CountryPicker extends Component {
                 />
                 <ScrollView
                   contentContainerStyle={styles.letters}
-                  keyboardShouldPersistTaps="always"
+                  keyboardShouldPersistTaps={true}
                 >
                   {this.state.filter === '' &&
                     this.state.letters.map((letter, index) =>
