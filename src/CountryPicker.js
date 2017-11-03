@@ -307,19 +307,24 @@ export default class CountryPicker extends Component {
   render() {
     return (
       <View>
-        <TouchableOpacity
-          disabled={this.props.disabled}
-          onPress={() => this.setState({ modalVisible: true })}
-          activeOpacity={0.7}
-        >
-          {this.props.children ? (
-            this.props.children
-          ) : (
-            <View style={styles.touchFlag}>
-              {CountryPicker.renderFlag(this.props.cca2)}
-            </View>
-          )}
-        </TouchableOpacity>
+        {this.props.showFlagIcon
+          ?  
+          <TouchableOpacity
+            disabled={this.props.disabled}
+            onPress={() => this.setState({ modalVisible: true })}
+            activeOpacity={0.7}
+          >
+            {this.props.children ? (
+              this.props.children
+            ) : (
+              <View style={styles.touchFlag}>
+                {CountryPicker.renderFlag(this.props.cca2)}
+              </View>
+            )}
+          </TouchableOpacity>
+          :
+          null
+        }
         <Modal
           visible={this.state.modalVisible}
           onRequestClose={() => this.setState({ modalVisible: false })}
