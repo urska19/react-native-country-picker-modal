@@ -17,7 +17,7 @@ import {
   TextInput,
   ListView,
   ScrollView,
-  Platform,
+  Platform
 } from 'react-native';
 import Fuse from 'fuse.js';
 
@@ -65,6 +65,9 @@ export default class CountryPicker extends Component {
     filterPlaceholder: React.PropTypes.string,
     filterPlaceholderTextColor: React.PropTypes.string,
     autoFocusFilter: React.PropTypes.bool,
+    optionalHeader: React.PropTypes.element,
+    transparentModal: React.PropTypes.bool,
+    animationTypeModal: React.PropTypes.string
   }
 
   static defaultProps = {
@@ -314,6 +317,8 @@ export default class CountryPicker extends Component {
           null
         }
         <Modal
+          animationType={this.props.animationTypeModal ? this.props.animationTypeModal : "none"}
+          transparent={this.props.transparentModal ? this.props.transparentModal : false}
           visible={this.state.modalVisible}
           onRequestClose={() => this.setState({ modalVisible: false })}
         >
@@ -340,29 +345,37 @@ export default class CountryPicker extends Component {
             </View>
             <KeyboardAvoidingView behavior="padding">
               <View style={styles.contentContainer}>
-                <ListView
-                  keyboardShouldPersistTaps={true}
-                  enableEmptySections
-                  ref={listView => this._listView = listView}
-                  dataSource={this.state.dataSource}
-                  renderRow={country => this.renderCountry(country)}
-                  initialListSize={30}
-                  pageSize={15}
-                  onLayout={
-                    (
-                      { nativeEvent: { layout: { y: offset } } }
-                    ) => this.setVisibleListHeight(offset)
-                  }
-                />
-                <ScrollView
-                  contentContainerStyle={styles.letters}
-                  keyboardShouldPersistTaps={true}
-                >
-                  {
-                    this.state.filter === '' &&
-                    this.state.letters.map((letter, index) => this.renderLetters(letter, index))
-                  }
-                </ScrollView>
+                {this.props.optionalHeader
+                  ?
+                  this.props.optionalHeader
+                  :
+                  null
+                }
+                <View style={styles.insideContentContainer}>
+                  <ListView
+                    keyboardShouldPersistTaps={true}
+                    enableEmptySections
+                    ref={listView => this._listView = listView}
+                    dataSource={this.state.dataSource}
+                    renderRow={country => this.renderCountry(country)}
+                    initialListSize={30}
+                    pageSize={15}
+                    onLayout={
+                      (
+                        { nativeEvent: { layout: { y: offset } } }
+                      ) => this.setVisibleListHeight(offset)
+                    }
+                  />
+                  <ScrollView
+                    contentContainerStyle={styles.letters}
+                    keyboardShouldPersistTaps={true}
+                  >
+                    {
+                      this.state.filter === '' &&
+                      this.state.letters.map((letter, index) => this.renderLetters(letter, index))
+                    }
+                  </ScrollView>
+                </View>
               </View>
             </KeyboardAvoidingView>
           </View>

@@ -13,6 +13,9 @@ export default StyleSheet.create({
     justifyContent: 'space-between',
     backgroundColor: 'white',
   },
+  insideContentContainer: {
+    flexDirection: 'row',
+  },
   header: {
     marginTop: Platform.OS === 'ios' ? 16 : 0,
     flexDirection: 'row',
