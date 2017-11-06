@@ -68,7 +68,8 @@ export default class CountryPicker extends Component {
     optionalHeader: React.PropTypes.element,
     transparentModal: React.PropTypes.bool,
     animationTypeModal: React.PropTypes.string,
-    isEmojiableFlag: React.PropTypes.bool
+    isEmojiableFlag: React.PropTypes.bool,
+    returnSingleNameCountry: React.PropTypes.bool
   }
 
   static defaultProps = {
@@ -191,7 +192,7 @@ export default class CountryPicker extends Component {
       cca2,
       ...countries[cca2],
       flag: countries[cca2].flag,
-      name: this.getCountryName(countries[cca2]),
+      name: this.props.returnSingleNameCountry ? this.getCountryName(countries[cca2]) : countries[cca2].name,
     });
   }
 
