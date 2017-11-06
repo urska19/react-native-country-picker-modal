@@ -68,7 +68,7 @@ export default class CountryPicker extends Component {
     optionalHeader: React.PropTypes.element,
     transparentModal: React.PropTypes.bool,
     animationTypeModal: React.PropTypes.string,
-    isEmojiableFlag: React.PropTypes.boolean
+    isEmojiableFlag: React.PropTypes.bool
   }
 
   static defaultProps = {
@@ -163,7 +163,7 @@ export default class CountryPicker extends Component {
         id: 'id',
       }
     );
-    
+
     isEmojiable = isEmojiable && this.props.isEmojiableFlag;
     if(!isEmojiable) {
       countries = require('../data/countries');
