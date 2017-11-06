@@ -77,10 +77,8 @@ export default class CountryPicker extends Component {
     excludeCountries: [],
     filterPlaceholder: 'Filter',
     autoFocusFilter: true,
-    isEmojiableFlag: true;
+    isEmojiableFlag: true
   }
-
-  isEmojiable = isEmojiable && this.props.isEmojiableFlag;
 
   static renderEmojiFlag(cca2, emojiStyle) {
     return (
@@ -165,6 +163,12 @@ export default class CountryPicker extends Component {
         id: 'id',
       }
     );
+    
+    isEmojiable = isEmojiable && this.props.isEmojiableFlag;
+    if(!isEmojiable) {
+      countries = require('../data/countries');
+      Emoji = <View />;
+    }
   }
 
   componentWillReceiveProps(nextProps) {
