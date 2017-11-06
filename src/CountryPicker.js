@@ -67,7 +67,8 @@ export default class CountryPicker extends Component {
     autoFocusFilter: React.PropTypes.bool,
     optionalHeader: React.PropTypes.element,
     transparentModal: React.PropTypes.bool,
-    animationTypeModal: React.PropTypes.string
+    animationTypeModal: React.PropTypes.string,
+    isEmojiableFlag: React.PropTypes.boolean
   }
 
   static defaultProps = {
@@ -76,7 +77,10 @@ export default class CountryPicker extends Component {
     excludeCountries: [],
     filterPlaceholder: 'Filter',
     autoFocusFilter: true,
+    isEmojiableFlag: true;
   }
+
+  isEmojiable = isEmojiable && this.props.isEmojiableFlag;
 
   static renderEmojiFlag(cca2, emojiStyle) {
     return (
