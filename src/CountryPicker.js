@@ -20,7 +20,7 @@ import {
   Platform
 } from 'react-native';
 import Fuse from 'fuse.js';
-
+import PropTypes from 'prop-types';
 import cca2List from '../data/cca2';
 import { getHeightPercent } from './ratio';
 import CloseButton from './CloseButton';
@@ -52,24 +52,24 @@ const ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 });
 
 export default class CountryPicker extends Component {
   static propTypes = {
-    cca2: React.PropTypes.string.isRequired,
-    translation: React.PropTypes.string,
-    onChange: React.PropTypes.func.isRequired,
-    onClose: React.PropTypes.func,
-    closeable: React.PropTypes.bool,
-    filterable: React.PropTypes.bool,
-    children: React.PropTypes.node,
-    countryList: React.PropTypes.array,
-    excludeCountries: React.PropTypes.array,
-    styles: React.PropTypes.object,
-    filterPlaceholder: React.PropTypes.string,
-    filterPlaceholderTextColor: React.PropTypes.string,
-    autoFocusFilter: React.PropTypes.bool,
-    optionalHeader: React.PropTypes.element,
-    transparentModal: React.PropTypes.bool,
-    animationTypeModal: React.PropTypes.string,
-    isEmojiableFlag: React.PropTypes.bool,
-    returnSingleNameCountry: React.PropTypes.bool
+    cca2: PropTypes.string.isRequired,
+    translation: PropTypes.string,
+    onChange: PropTypes.func.isRequired,
+    onClose: PropTypes.func,
+    closeable: PropTypes.bool,
+    filterable: PropTypes.bool,
+    children: PropTypes.node,
+    countryList: PropTypes.array,
+    excludeCountries: PropTypes.array,
+    styles: PropTypes.object,
+    filterPlaceholder: PropTypes.string,
+    filterPlaceholderTextColor: PropTypes.string,
+    autoFocusFilter: PropTypes.bool,
+    optionalHeader: PropTypes.element,
+    transparentModal: PropTypes.bool,
+    animationTypeModal: PropTypes.string,
+    isEmojiableFlag: PropTypes.bool,
+    returnSingleNameCountry: PropTypes.bool
   }
 
   static defaultProps = {
