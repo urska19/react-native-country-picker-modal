@@ -35,7 +35,7 @@ let styles = {};
 // but for now just ios
 // const isEmojiable = Platform.OS === 'ios' ||
 // (Platform.OS === 'android' && Platform.Version >= 21);
-const isEmojiable = Platform.OS === 'ios';
+var isEmojiable = Platform.OS === 'ios';
 
 if (isEmojiable) {
   countries = require('../data/countries-emoji');
@@ -362,7 +362,7 @@ export default class CountryPicker extends Component {
                 }
                 <View style={styles.insideContentContainer}>
                   <ListView
-                    keyboardShouldPersistTaps={true}
+                    keyboardShouldPersistTaps="always"
                     enableEmptySections
                     ref={listView => this._listView = listView}
                     dataSource={this.state.dataSource}
